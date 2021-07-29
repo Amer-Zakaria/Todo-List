@@ -1,0 +1,18 @@
+<svg width="0" height="0" class="hidden">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="cross">
+    <path d="M512 22.252L489.747.001l-233.812 233.81L22.253.139 0 22.39l233.682 233.674L0 489.748l22.253 22.251 233.682-233.68 233.689 233.68 22.253-22.251-233.689-233.684z"></path>
+  </symbol>
+  <symbol aria-hidden="true" data-prefix="fas" data-icon="pen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="pen-solid">
+    <path fill="currentColor" d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="plus">
+    <path d="M492 236H276V20c0-11.046-8.954-20-20-20s-20 8.954-20 20v216H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h216v216c0 11.046 8.954 20 20 20s20-8.954 20-20V276h216c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol aria-hidden="true" data-prefix="fas" data-icon="trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="trash-solid">
+    <path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 00281.1 0H166.8a23.72 23.72 0 00-21.4 13.3L136 32H16A16 16 0 000 48v32a16 16 0 0016 16h416a16 16 0 0016-16V48a16 16 0 00-16-16zM53.2 467a48 48 0 0047.9 45h245.8a48 48 0 0047.9-45L416 128H32z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" id="check2-all">
+    <path d="M12.354 4.354a.5.5 0 00-.708-.708L5 10.293 1.854 7.146a.5.5 0 10-.708.708l3.5 3.5a.5.5 0 00.708 0l7-7zm-4.208 7l-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 01.708.708l-7 7a.5.5 0 01-.708 0z"></path>
+    <path d="M5.354 7.146l.896.897-.707.707-.897-.896a.5.5 0 11.708-.708z"></path>
+  </symbol>
+</svg>
