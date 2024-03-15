@@ -17,7 +17,7 @@ const ModalEdit = (props) => {
           onChange={(e) => onTodoChange(todo.id, e.target.value)}
           autoFocus
           onKeyDown={(e) => {
-            if (e.key === "Enter") onModalEditDone(todo.id);
+            if (e.key === "Enter") onModalEditDone(todo);
           }}
         />
         <button
@@ -28,7 +28,7 @@ const ModalEdit = (props) => {
         </button>
         <button
           className="modal__btn modal__done"
-          onClick={() => onModalEditDone(todo.id)}
+          onClick={() => onModalEditDone(todo)}
         >
           Done
         </button>

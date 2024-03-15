@@ -7,20 +7,46 @@ const Todo = (props) => {
   const { onDelete, onComplete, onCancel, onEdit } = useContext(TodosContext);
   const todo = props.todo;
 
-  let classes = `todo ${todo.status === "completed" ? "todo--completed" : ""} ${
-    todo.status === "canceled" ? "todo--canceled" : ""
-  }`;
+  let classes = `todo ${
+    todo.status === "SUCCESSFUL" ? "todo--completed" : ""
+  } ${todo.status === "CANCELED" ? "todo--canceled" : ""}`;
 
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      style={
+        todo.isChanging
+          ? {
+              // position: "relative",
+              filter: "blur(.7px)",
+            }
+          : {}
+      }
+    >
+      {todo.isChanging && (
+        <div className="spinner-container spinner-container__todo">
+          <svg class="spinner" viewBox="0 0 50 50">
+            <circle
+              class="spinner-path"
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              stroke-width="5"
+            ></circle>
+          </svg>
+        </div>
+      )}
+
       <div className="todo__body">
         <p className="todo__date">{todo.date}</p>
         <div className="todo__content">{todo.newValue}</div>
       </div>
+
       <div className="todo__icons">
         <span
           className="icon-container icon-container--red"
-          onClick={() => onDelete(todo.id)}
+          onClick={() => onDelete(todo)}
         >
           <svg className="icon">
             <use href={sprite + "#trash-solid"}></use>
@@ -36,7 +62,7 @@ const Todo = (props) => {
         </span>
         <span
           className="icon-container icon-container--red"
-          onClick={() => onCancel(todo.id)}
+          onClick={() => onCancel(todo)}
         >
           <svg className="icon">
             <use href={sprite + "#cross"}></use>
@@ -44,7 +70,7 @@ const Todo = (props) => {
         </span>
         <span
           className="icon-container icon-container--green"
-          onClick={() => onComplete(todo.id)}
+          onClick={() => onComplete(todo)}
         >
           <svg className="icon">
             <use href={sprite + "#check2-all"}></use>
