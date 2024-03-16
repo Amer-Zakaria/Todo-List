@@ -13,34 +13,31 @@ import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import ErrorPage from "./pages/ErrorPage";
 
-const router = createBrowserRouter(
-  [
-    {
-      path: `/`,
-      element: <ProtectedRoute Element={App} />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: `/sign-up`,
-      element: <Signup />,
-    },
-    {
-      path: `/sign-in`,
-      element: <SignIn />,
-    },
-    {
-      path: `/google-error`,
-      element: (
-        <ErrorPage
-          errorMessage={
-            "Something went wrong while trying to log you in with Google"
-          }
-        />
-      ),
-    },
-  ],
-  { basename: "/" }
-);
+const router = createBrowserRouter([
+  {
+    path: `/`,
+    element: <ProtectedRoute Element={App} />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: `/sign-up`,
+    element: <Signup />,
+  },
+  {
+    path: `/sign-in`,
+    element: <SignIn />,
+  },
+  {
+    path: `/google-error`,
+    element: (
+      <ErrorPage
+        errorMessage={
+          "Something went wrong while trying to log you in with Google"
+        }
+      />
+    ),
+  },
+]);
 
 ReactDOM.render(
   <React.StrictMode>
