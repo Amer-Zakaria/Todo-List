@@ -12,7 +12,7 @@ export default function ErrorPage({ errorMessage }) {
         <i>{errorMessage || error.statusText || error.message}</i>
       </p>
       <p>
-        Get Back to Your <a href="/todo-list">Todos</a>
+        Get Back to Your <a href="/">Todos</a>
       </p>
     </div>
   );

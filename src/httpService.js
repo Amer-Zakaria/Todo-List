@@ -17,7 +17,7 @@ axios.interceptors.response.use(
       error.response?.status < 500;
 
     if (error.response?.status === 401) {
-      window.history.pushState({}, "", "/todo-list/sign-in?isAuthError=true");
+      window.history.pushState({}, "", "/sign-in?isAuthError=true");
       window.location.reload();
     } else if (error.response?.status === 404) {
       toast.error("Not Found!");

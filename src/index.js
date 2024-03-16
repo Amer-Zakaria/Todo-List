@@ -39,7 +39,7 @@ const router = createBrowserRouter(
       ),
     },
   ],
-  { basename: "/todo-list" }
+  { basename: "/" }
 );
 
 ReactDOM.render(
