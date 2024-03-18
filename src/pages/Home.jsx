@@ -6,7 +6,7 @@ import newDate from "../Utils/getDate";
 import http from "../httpService";
 import getDate from "../Utils/getDate";
 
-function App() {
+function Home() {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modalAddVisibility, setModalAddVisibility] = useState(""); // First For Add Modal Second for Edit
@@ -241,7 +241,7 @@ function App() {
 
   return (
     <TodosContext.Provider value={todosCollection}>
-      <div className="App">
+      <>
         {isLoading && (
           <div className="spinner-container spinner-container__app">
             <svg className="spinner" viewBox="0 0 50 50">
@@ -260,9 +260,9 @@ function App() {
         <h1>Todo List</h1>
         <Todos />
         {modalAddVisibility === "active" ? <ModalAdd /> : null}
-      </div>
+      </>
     </TodosContext.Provider>
   );
 }
 
-export default App;
+export default Home;

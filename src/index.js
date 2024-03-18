@@ -5,44 +5,11 @@ import "./CSS/index.css";
 import "./CSS/milligram.css";
 import "./CSS/App.css";
 import "react-toastify/dist/ReactToastify.css";
-import App from "./pages/App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Signup from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import { ToastContainer } from "react-toastify";
-import ProtectedRoute from "./Components/ProtectedRoute";
-import ErrorPage from "./pages/ErrorPage";
-
-const router = createBrowserRouter([
-  {
-    path: `/`,
-    element: <ProtectedRoute Element={App} />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: `/sign-up`,
-    element: <Signup />,
-  },
-  {
-    path: `/sign-in`,
-    element: <SignIn />,
-  },
-  {
-    path: `/google-error`,
-    element: (
-      <ErrorPage
-        errorMessage={
-          "Something went wrong while trying to log you in with Google"
-        }
-      />
-    ),
-  },
-]);
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
