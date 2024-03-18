@@ -17,7 +17,7 @@ export default function SignUp() {
     if (password !== confirmPassword) {
       setError((oldError) => ({
         ...oldError,
-        password: "Password should equal configrm password",
+        password: "Password should equal confirm password",
       }));
       return;
     }
