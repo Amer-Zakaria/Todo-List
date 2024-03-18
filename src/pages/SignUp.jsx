@@ -4,20 +4,29 @@ import { Link } from "react-router-dom";
 import http from "../httpService";
 
 export default function SignUp() {
-  const [{ name, email, password }, setUser] = useState({
+  const [{ name, email, password, confirmPassword }, setUser] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [error, setError] = useState({ name: "", email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit() {
+    if (password !== confirmPassword) {
+      setError((oldError) => ({
+        ...oldError,
+        password: "Password should equal configrm password",
+      }));
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       await http.post("/users", {
-        name,
-        email,
+        name: name.trim(),
+        email: email.trim(),
         password,
       });
 
@@ -30,7 +39,13 @@ export default function SignUp() {
 
   return (
     <div className="auth">
-      <form className="auth__container">
+      <form
+        className="auth__container"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <fieldset className="auth__content">
           <h1 className="auth__title">Sign Up</h1>
           <div>
@@ -98,12 +113,23 @@ export default function SignUp() {
               )}
             </div>
 
-            <input
-              type="submit"
-              disabled={isSubmitting}
-              value="Send"
-              onClick={() => handleSubmit()}
-            />
+            <div className="auth__form-element">
+              <label htmlFor="confirmpassField">Confirm Password</label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) =>
+                  setUser((oldUser) => ({
+                    ...oldUser,
+                    confirmPassword: e.target.value,
+                  }))
+                }
+                placeholder="********"
+                id="confirmpassField"
+              />
+            </div>
+
+            <input type="submit" disabled={isSubmitting} value="Send" />
             <div className="auth__instead">
               <Link to={"/sign-in"} className="button button-outline">
                 Sign In Instead

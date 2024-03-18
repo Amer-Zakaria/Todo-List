@@ -25,7 +25,7 @@ export default function SignIn() {
     setIsSubmitting(true);
     try {
       await http.post("/auth", {
-        email,
+        email: email.trim(),
         password,
       });
 
@@ -107,12 +107,7 @@ export default function SignIn() {
               )}
             </div>
 
-            <input
-              type="submit"
-              disabled={isSubmitting}
-              value="Send"
-              onClick={handleSubmit}
-            />
+            <input type="submit" disabled={isSubmitting} value="Send" />
             <div className="auth__instead">
               <Link to={"/sign-up"} className="button button-outline">
                 Sign Up Instead
