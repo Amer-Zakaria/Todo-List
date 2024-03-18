@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import ContinueWithGoogle from "../Components/continueWithGoogle";
 import { Link } from "react-router-dom";
 import http from "../httpService";
-import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-  const navigate = useNavigate();
   const [{ name, email, password }, setUser] = useState({
     name: "",
     email: "",
@@ -22,9 +20,8 @@ export default function SignUp() {
         email,
         password,
       });
-      setIsSubmitting(false);
 
-      navigate("/");
+      setIsSubmitting(false);
     } catch (e) {
       setIsSubmitting(false);
       if (e.response?.data?.validation) setError(e.response.data.validation);

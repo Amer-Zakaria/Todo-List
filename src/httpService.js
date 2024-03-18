@@ -1,13 +1,16 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { storeToken, getToken } from "./Utils/token";
 
 export const baseURL = process.env.REACT_APP_API_URL;
 
+axios.defaults.headers["x-auth-token"] = getToken();
 axios.defaults.baseURL = baseURL;
-axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(
   (response) => {
+    storeToken(response.headers["x-auth-token"]);
+
     return response.data;
   },
   async (error) => {

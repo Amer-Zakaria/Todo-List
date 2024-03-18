@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import ContinueWithGoogle from "../Components/continueWithGoogle";
 import { Link, useSearchParams } from "react-router-dom";
 import http from "../httpService";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function SignIn() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [{ email, password }, setUser] = useState({
     email: "",
@@ -30,9 +28,8 @@ export default function SignIn() {
         email,
         password,
       });
-      setIsSubmitting(false);
 
-      navigate("/");
+      setIsSubmitting(false);
     } catch (e) {
       setIsSubmitting(false);
       if (e.response?.data?.validation) setError(e.response.data.validation);
