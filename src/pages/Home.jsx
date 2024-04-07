@@ -5,6 +5,7 @@ import ModalAdd from "../Components/ModalAdd";
 import newDate from "../Utils/getDate";
 import http from "../httpService";
 import getDate from "../Utils/getDate";
+import LogoutButton from "./../Components/LogoutButton";
 
 function Home() {
   const [todos, setTodos] = useState([]);
@@ -112,7 +113,6 @@ function Home() {
         })
       );
     } catch (e) {
-      console.log(e);
       // remove the todo on server error
       return setTodos((todos) => todos.filter((t) => t.id !== tempId));
     }
@@ -241,6 +241,7 @@ function Home() {
 
   return (
     <TodosContext.Provider value={todosCollection}>
+      <LogoutButton />
       <>
         {isLoading && (
           <div className="spinner-container spinner-container__app">

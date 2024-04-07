@@ -1,15 +1,37 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { storeToken, getToken } from "./Utils/token";
+import {
+  storeTokens,
+  getToken,
+  getTokenExperationDateInMSec,
+  getRefreshToken,
+} from "./Utils/token";
 
 export const baseURL = process.env.REACT_APP_API_URL;
 
-axios.defaults.headers["x-auth-token"] = getToken();
 axios.defaults.baseURL = baseURL;
+
+axios.interceptors.request.use(
+  (config) => {
+    const isAccessTokenExpired =
+      Date.parse(new Date()) > getTokenExperationDateInMSec();
+
+    if (isAccessTokenExpired)
+      config.headers["x-refresh-token"] = getRefreshToken();
+    else config.headers["x-auth-token"] = getToken();
+
+    return config;
+  },
+  (err) => Promise.reject(err),
+  { synchronous: true }
+);
 
 axios.interceptors.response.use(
   (response) => {
-    storeToken(response.headers["x-auth-token"]);
+    storeTokens({
+      token: response.headers["x-auth-token"],
+      refreshToken: response.headers["x-refresh-token"],
+    });
 
     return response.data;
   },
@@ -19,7 +41,7 @@ axios.interceptors.response.use(
       error.response?.status >= 400 &&
       error.response?.status < 500;
 
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 || error.response?.status === 403) {
       window.history.pushState({}, "", "/sign-in?isAuthError=true");
       window.location.reload();
     } else if (error.response?.status === 404) {

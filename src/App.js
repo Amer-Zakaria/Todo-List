@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Signup from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
-import http from "./httpService";
+import "./httpService";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +35,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  //Fire a request when app mounts  so that the server gets awakened
-  useEffect(async () => {
-    await http
-      .get("", { baseURL: process.env.REACT_APP_API_URL.split("/api")[0] })
-      .catch((e) => {});
-  }, []);
-
   return (
     <div className="App">
       <RouterProvider router={router} />

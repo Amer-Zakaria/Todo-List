@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ContinueWithGoogle from "../Components/continueWithGoogle";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import http from "../httpService";
 import { toast } from "react-toastify";
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [{ email, password }, setUser] = useState({
     email: "",
@@ -28,6 +29,8 @@ export default function SignIn() {
         email: email.trim(),
         password,
       });
+
+      navigate("/");
 
       setIsSubmitting(false);
     } catch (e) {

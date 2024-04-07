@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ContinueWithGoogle from "../Components/continueWithGoogle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import http from "../httpService";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [{ name, email, password, confirmPassword }, setUser] = useState({
     name: "",
     email: "",
@@ -29,6 +30,8 @@ export default function SignUp() {
         email: email.trim(),
         password,
       });
+
+      navigate("/");
 
       setIsSubmitting(false);
     } catch (e) {
