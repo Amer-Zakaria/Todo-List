@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -54,8 +54,8 @@ form, fieldset {
 }
 
 .button-outline {
-  color: inherit !important;
-  border-color: inherit !important;   
+  color: inherit;
+  border-color: inherit;   
 }
 
 input[type="submit"]:disabled{
@@ -121,6 +121,17 @@ input[type="submit"]:disabled{
   height: 3rem;
 }
 
+/* badges */
+.badge {
+  background-color: var(--color-blue);
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 0
+}
+
 /* todo */
 .todo {
   display: grid;
@@ -160,10 +171,14 @@ input[type="submit"]:disabled{
 
 /* Logout */
 .logout {
-  color: white;
+  color: #eee !important;
   cursor: pointer;
   text-decoration: underline;
   font-family: sans-serif;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0;
+  margin: 0
 }
 
 /* Todo completed and canceled */
@@ -308,6 +323,46 @@ input[type="submit"]:disabled{
   }
 }
 
+/* home */
+.home__title {
+  margin-top: 0
+}
+
+/* user */
+.user {
+  background: rgba(1, 1, 1, 0.15);
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+}
+
+.user__name {
+  color: white;
+  margin: 0;
+  font-size: 2.5rem
+}
+
+.user__email {
+  color: #eee;
+  margin: 0;
+  font-size: 1.8rem;
+  display: inline-block;
+  text-wrap: nowrap;
+  margin-right: .5rem;
+}
+
+.user__warning {
+  color: #ddd;
+  margin: 0;
+  font-size: 1.5rem;
+  margin-right: .5rem;
+}
+
+.user__verify-button {
+  text-decoration: underline;
+}
+
 /* todos */
 .todos {
   padding: 1rem 2rem;
@@ -357,6 +412,34 @@ input[type="submit"]:disabled{
   width: 100%;
   height: 200%;
   text-align: center;
+}
+
+/* Error page */
+.send-verification {
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200%;
+  text-align: center;
+}
+
+.send-verification button {
+  border: var(--color-green);
+}
+
+.send-verification__resent-container {
+  margin: 2rem 0;
+}
+
+.send-verification__resent-container p {
+  margin: 1rem;
+}
+
+.send-verification__skip {
+  text-decoration: underline !important
 }
 
 /* Auth */

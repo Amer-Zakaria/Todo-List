@@ -31,7 +31,7 @@ export default function SignUp() {
         password,
       });
 
-      navigate("/");
+      navigate("/send-email-verification", { state: { from: "sign-up" } });
 
       setIsSubmitting(false);
     } catch (e) {

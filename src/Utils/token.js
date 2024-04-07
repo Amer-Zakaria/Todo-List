@@ -16,6 +16,7 @@ export function storeTokens({ token = "", refreshToken = "" }) {
     Cookies.set("TLAccessTokenExpiresAtInMSec", Date.parse(ExpirationTime), {
       expires: 365,
     });
+    Cookies.set("TLUser", decoded, { expires: 365 });
     // Get total seconds between the two times
     var secondsToExpire = Math.abs(ExpirationTime - CurrentTime) / 1000;
     // Extract the number of days
@@ -46,8 +47,13 @@ export function getRefreshToken() {
   return Cookies.get("TLRefreshToken");
 }
 
+export function getUser() {
+  return JSON.parse(Cookies.get("TLUser"));
+}
+
 export function removeTokens() {
   Cookies.remove("TLAccessToken");
   Cookies.remove("TLRefreshToken");
   Cookies.remove("TLAccessTokenExpiresAtInMSec");
+  Cookies.remove("TLUser");
 }

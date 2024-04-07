@@ -14,7 +14,7 @@ axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use(
   (config) => {
     const isAccessTokenExpired =
-      Date.parse(new Date()) > getTokenExperationDateInMSec();
+      Date.parse(new Date()) > getTokenExperationDateInMSec() + 60 * 1000;
 
     if (isAccessTokenExpired)
       config.headers["x-refresh-token"] = getRefreshToken();

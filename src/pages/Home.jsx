@@ -5,7 +5,7 @@ import ModalAdd from "../Components/ModalAdd";
 import newDate from "../Utils/getDate";
 import http from "../httpService";
 import getDate from "../Utils/getDate";
-import LogoutButton from "./../Components/LogoutButton";
+import User from "../Components/User";
 
 function Home() {
   const [todos, setTodos] = useState([]);
@@ -241,27 +241,25 @@ function Home() {
 
   return (
     <TodosContext.Provider value={todosCollection}>
-      <LogoutButton />
-      <>
-        {isLoading && (
-          <div className="spinner-container spinner-container__app">
-            <svg className="spinner" viewBox="0 0 50 50">
-              <circle
-                className="spinner-path"
-                cx="25"
-                cy="25"
-                r="20"
-                fill="none"
-                stroke-width="5"
-              ></circle>
-            </svg>
-          </div>
-        )}
+      {isLoading && (
+        <div className="spinner-container spinner-container__app">
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle
+              className="spinner-path"
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              stroke-width="5"
+            ></circle>
+          </svg>
+        </div>
+      )}
 
-        <h1>Todo List</h1>
-        <Todos />
-        {modalAddVisibility === "active" ? <ModalAdd /> : null}
-      </>
+      <User />
+      <h1 className="home__title">Todo List</h1>
+      <Todos />
+      {modalAddVisibility === "active" ? <ModalAdd /> : null}
     </TodosContext.Provider>
   );
 }
