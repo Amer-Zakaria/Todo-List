@@ -4,7 +4,7 @@ export default function getGoogleOAuthLink() {
   const options = {
     client_id:
       "912237735585-nig1mv1e070tuut7bbsttomjrc7909u8.apps.googleusercontent.com",
-    redirect_uri: `${process.env.REACT_APP_API_URL}/users/oauth/google`,
+    redirect_uri: `${process.env.REACT_APP_API_URL}/oauth/google`,
     access_type: "offline",
     response_type: "code",
     prompt: "consent",

@@ -13,24 +13,26 @@ axios.defaults.baseURL = baseURL;
 
 axios.interceptors.request.use(
   (config) => {
-    const isAccessTokenExpired =
-      Date.parse(new Date()) > getTokenExperationDateInMSec() + 60 * 1000;
+    const accessToken = getToken();
+
+    const isAccessTokenExpired = accessToken
+      ? Date.parse(new Date()) > getTokenExperationDateInMSec() - 60 * 1000 //-1m
+      : true;
 
     if (isAccessTokenExpired)
       config.headers["x-refresh-token"] = getRefreshToken();
-    else config.headers["x-auth-token"] = getToken();
+    else config.headers["x-auth-token"] = accessToken;
 
     return config;
   },
-  (err) => Promise.reject(err),
-  { synchronous: true }
+  (err) => Promise.reject(err)
 );
 
 axios.interceptors.response.use(
   (response) => {
     storeTokens({
-      token: response.headers["x-auth-token"],
-      refreshToken: response.headers["x-refresh-token"],
+      token: response.headers?.["x-auth-token"],
+      refreshToken: response.headers?.["x-refresh-token"],
     });
 
     return response.data;
