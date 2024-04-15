@@ -43,9 +43,11 @@ axios.interceptors.response.use(
       error.response?.status >= 400 &&
       error.response?.status < 500;
 
-    if (error.response?.status === 401 || error.response?.status === 403) {
+    if (error.response?.status === 401) {
       window.history.pushState({}, "", "/sign-in?isAuthError=true");
       window.location.reload();
+    } else if (error.response?.status === 403) {
+      toast.error("Forbidden!");
     } else if (error.response?.status === 404) {
       toast.error("Not Found!");
     } else if (!isExpectedError) {

@@ -8,6 +8,9 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import "./httpService";
+import ForgotPass from "./pages/ForgotPass.jsx";
+import SendPassResetLink from "./pages/SendPassResetLink.jsx";
+import ResetPass from "./pages/ResetPass.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,18 @@ const router = createBrowserRouter([
   {
     path: `/send-email-verification`,
     element: <ProtectedRoute Element={SendEmailVerificationLink} />,
+  },
+  {
+    path: `/forgot-pass`,
+    element: <ForgotPass />,
+  },
+  {
+    path: `/send-pass-reset-link`,
+    element: <SendPassResetLink />,
+  },
+  {
+    path: `/reset-pass`,
+    element: <ResetPass />,
   },
   {
     path: `/email-validation-error`,

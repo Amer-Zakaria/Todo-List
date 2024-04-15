@@ -79,18 +79,21 @@ export default function SignIn() {
 
             <div className="auth__form-element">
               <label
-                // className="auth-password-label-with-forgot"
+                className="auth-password-label-with-forgot"
                 htmlFor="passwordField"
               >
                 Password
               </label>
-              {/* <div className="auth__forgot-password-container">
-                <input
-                  className="auth__forgot-password button button-clear"
-                  type="submit"
-                  value="Forgot Password?"
-                />
-              </div> */}
+              {
+                <div className="auth__forgot-password-container">
+                  <input
+                    className="auth__forgot-password button button-clear"
+                    type="submit"
+                    value="Forgot Password?"
+                    onClick={() => navigate("/forgot-pass")}
+                  />
+                </div>
+              }
               <input
                 type="password"
                 value={password}
