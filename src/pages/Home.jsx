@@ -17,7 +17,7 @@ function Home() {
   const [modalAddVisibility, setModalAddVisibility] = useState(""); // First For Add Modal Second for Edit
 
   useEffect(() => {
-    const socket = io("ws://localhost:3001");
+    const socket = io(process.env.REACT_APP_WS_URL);
 
     socket.on("connect", () => {
       socket.emit("auth", getUser().id);
