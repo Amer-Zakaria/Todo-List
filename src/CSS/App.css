@@ -324,7 +324,7 @@ input[type="submit"]:disabled{
 /* user */
 .user {
   background: rgba(1, 1, 1, 0.15);
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: inline-block;
   border-radius: 10px;
   margin-bottom: 4rem;
