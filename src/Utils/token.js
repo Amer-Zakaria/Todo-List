@@ -30,7 +30,7 @@ export function getRefreshToken() {
 }
 
 export function getUser() {
-  return JSON.parse(Cookies.get("TLUser"));
+  return Cookies.get("TLUser") ? JSON.parse(Cookies.get("TLUser")) : null;
 }
 
 export function removeTokens() {

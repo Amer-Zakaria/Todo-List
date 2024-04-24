@@ -256,7 +256,7 @@ function Home() {
         </div>
       )}
 
-      <User />
+      {!isLoading && <User />}
       <h1 className="home__title">Todo List</h1>
       <Todos />
       {modalAddVisibility === "active" ? <ModalAdd /> : null}
