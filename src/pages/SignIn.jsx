@@ -68,7 +68,6 @@ export default function SignIn() {
                     email: e.target.value,
                   }));
                 }}
-                placeholder="amerzkfe1234@gmail.com"
                 id="emailField"
                 style={error.email ? { marginBottom: 0 } : {}}
               />
@@ -104,7 +103,6 @@ export default function SignIn() {
                     password: e.target.value,
                   }));
                 }}
-                placeholder="********"
                 id="passwordField"
                 style={error.password ? { marginBottom: 0 } : {}}
               />

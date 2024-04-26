@@ -56,7 +56,6 @@ export default function ForgotPass() {
                     email: e.target.value,
                   }));
                 }}
-                placeholder="amerzkfe1234@gmail.com"
                 id="emailField"
                 style={error.email ? { marginBottom: 0 } : {}}
               />

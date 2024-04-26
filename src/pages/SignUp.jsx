@@ -67,7 +67,6 @@ export default function SignUp() {
                     name: e.target.value,
                   }));
                 }}
-                placeholder="Amer Zakaria"
                 id="nameField"
                 style={error.name ? { marginBottom: 0 } : {}}
               />
@@ -86,7 +85,6 @@ export default function SignUp() {
                     email: e.target.value,
                   }));
                 }}
-                placeholder="amerzkfe1234@gmail.com"
                 id="emailField"
                 style={error.email ? { marginBottom: 0 } : {}}
               />
@@ -107,7 +105,6 @@ export default function SignUp() {
                     password: e.target.value,
                   }));
                 }}
-                placeholder="********"
                 id="passwordField"
                 style={error.password ? { marginBottom: 0 } : {}}
               />
@@ -127,7 +124,6 @@ export default function SignUp() {
                     confirmPassword: e.target.value,
                   }))
                 }
-                placeholder="********"
                 id="confirmpassField"
               />
             </div>
