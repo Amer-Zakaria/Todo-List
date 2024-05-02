@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import TodosContext from "../Context/todosContext";
 
 const Modal = (props) => {
-  const { onModalAddDone, onModalAddCancel } = useContext(TodosContext);
+  const { onModalAddDone, onModalAddCancel, isLoading } =
+    useContext(TodosContext);
 
   return (
     <React.Fragment>
@@ -21,6 +22,7 @@ const Modal = (props) => {
           Cancel
         </button>
         <button
+          disabled={isLoading}
           className="modal__btn modal__done"
           onClick={() => onModalAddDone(document.querySelector("input").value)}
         >

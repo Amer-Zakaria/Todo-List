@@ -3,7 +3,7 @@ import TodosContext from "../Context/todosContext";
 
 const ModalEdit = (props) => {
   const todo = props.todo;
-  const { onModalEditCancel, onModalEditDone, onTodoChange } =
+  const { onModalEditCancel, onModalEditDone, onTodoChange, isLoading } =
     useContext(TodosContext);
 
   return (
@@ -27,6 +27,7 @@ const ModalEdit = (props) => {
           Cancel
         </button>
         <button
+          disabled={isLoading}
           className="modal__btn modal__done"
           onClick={() => onModalEditDone(todo)}
         >

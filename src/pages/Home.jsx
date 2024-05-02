@@ -6,11 +6,28 @@ import newDate from "../Utils/getDate";
 import http from "../httpService";
 import getDate from "../Utils/getDate";
 import User from "../Components/User";
+import io from "socket.io-client";
+import { getUser } from "../Utils/token";
+import axios from "axios";
 
 function Home() {
+  const [isUpdated, setIsUpdated] = useState(false);
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modalAddVisibility, setModalAddVisibility] = useState(""); // First For Add Modal Second for Edit
+
+  useEffect(() => {
+    const socket = io(process.env.REACT_APP_WS_URL);
+
+    socket.on("connect", () => {
+      socket.emit("auth", getUser().id);
+      axios.defaults.headers["socket-id"] = socket.id;
+    });
+
+    socket.on("TodoUpdated", (text) => {
+      setIsUpdated((old) => !old);
+    });
+  }, []);
 
   //Handlers
   const handleDelete = async (todo) => {
@@ -226,7 +243,7 @@ function Home() {
     } catch (e) {
       setIsLoading(false);
     }
-  }, []);
+  }, [isUpdated]);
 
   document.body.onkeydown = (e) => {
     //prevent auto scroll when space bar pressed
